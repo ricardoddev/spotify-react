@@ -1,0 +1,258 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@500&family=Rajdhani:wght@500&display=swap');
+  
+  body{
+    height: 100vh;
+  }
+  
+  header {
+    display: flex;
+    background-color: #1c1c1c;
+    width: 100vw;
+    height: 12vh;
+  }
+  
+  header div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 2.5vh 15vw;
+  }
+  
+  header img {
+    height: 45px;
+  }
+  
+  header span a {
+    padding: 20px;
+    font-family: "Mulish", sans-serif;
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  header span a:hover {
+    color: #1db954;
+    text-decoration: underline;
+  }
+  
+  main {
+    background-color: #696969;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 15vw;
+    padding-top: 10px;
+  }
+  
+  .container div ul {
+    margin-top: 2vh;
+    list-style-type: none;
+  }
+  
+  .container div h1 {
+    font-family: "Mulish", sans-serif;
+    color: #1db954;
+  }
+  
+  .container div ul li {
+    font-family: "Rajdhani", sans-serif;
+    padding-top: 20px;
+    font-size: 19px;
+    color: #fff;
+  }
+  
+  #entrar {
+    border-top: solid #cac2b5 1px;
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  #entrar h1 {
+    color: #fff;
+    font-family: "Mulish", sans-serif;
+    margin-top: 36px;
+  }
+  
+  #entrar button {
+    background-color: #1db954;
+    padding: 30px;
+    cursor: pointer;
+    border: 1px solid #1db954;
+    border-radius: 500px;
+    transition: 0.15s;
+    margin-bottom: 90px;
+    font-weight: bold;
+    font-size: 24px;
+  }
+  
+  #entrar button a {
+    font-size: 24px;
+    font-family: "Mulish", sans-serif;
+    color: #1c1c1c;
+    text-decoration: none;
+  }
+  
+  #entrar button:hover {
+    border: 1.5px solid #1c1c1c;
+    padding: 32px;
+  }
+  
+  #divgenero {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px 25px;
+    
+  }
+  
+  #divbotao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+  }
+  
+  #BCadastro {
+    background-color: #1db954;
+    color: #000;
+    
+  }
+  #BCadastroLogin {
+    background-color: #1db954;
+    color: #000;
+    margin-top: 0px;
+    border-radius: 500px;
+  }
+  #SenhaP {
+    color: #000;
+  }
+  .SpanCadastro {
+    font-size: 12px;
+  }
+  #Lfone {
+    color: #117a37;
+    font-size: 14px;
+    padding-top: 8px;
+  }
+  #DivLog {
+    text-align: center;
+  }
+  #Flo a {
+    color: #117a37;
+  }
+  .caption {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  #faq{
+    background-color: #92ad94;
+  }
+  
+  #faq h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0;
+    margin: 0 auto;
+  }
+  
+  #faq h1 {
+    font-size: 48px;
+    font-family: "Mulish", sans-serif;
+    width: 20vw;
+    margin: 0 auto;
+  }
+  
+  
+  #duvidas {
+    display: grid;
+    grid-template-areas: 
+      "d1 d2 d3"
+      "r1 r2 r3"
+      "d4 d5 d6"
+      "r4 r5 r6";
+    margin: 100px;
+    justify-content: space-evenly;
+    row-gap: 50px;
+    column-gap: 50px;
+
+  }
+  
+  #duvida1 {
+    grid-area: d1;
+  }
+  
+  #duvida2 {
+    grid-area: d2;
+  }
+  
+  #duvida3 {
+    grid-area: d3;
+  }
+  
+  #duvida4 {
+    grid-area: d4;
+  }
+  
+  #duvida5 {
+    grid-area: d5;
+  }
+  
+  #duvida6 {
+    grid-area: d6;
+  }
+  
+  #resposta1 {
+    grid-area: r1;
+  }
+  
+  #resposta2 {
+    grid-area: r2;
+  }
+  
+  #resposta3 {
+    grid-area: r3;
+  }
+  
+  #resposta4 {
+    grid-area: r4;
+  }
+  
+  #resposta5 {
+    grid-area: r5;
+  }
+  
+  #resposta6 {
+    grid-area: r6;
+  }
+  
+  
+  #duvidas li {
+    list-style-type: none;
+    font-size: 20px;
+    font-family: "Mulish", sans-serif;
+  }
+  
+  #duvidas p{
+    font-family: "Mulish", sans-serif;
+    color: #36413e;
+  }
