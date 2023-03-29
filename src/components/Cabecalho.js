@@ -9,7 +9,8 @@ const Cabecalho = () =>{
             <div>
                 <Link to="/"><img src={Logo} alt="Logotipo Spotify" /></Link>
                 <span>
-                    <Link to="/faq">Dúvidas Frequentes</Link>            
+                    <Link to="/faq">Dúvidas Frequentes</Link>    
+                    <Link to="/cadastro">Cadastre-se</Link>       
                 </span>
             </div>
         </header>
