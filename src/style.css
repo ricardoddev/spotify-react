@@ -258,3 +258,16 @@
     font-family: "Mulish", sans-serif;
     color: #36413e;
   }
+
+  .playlists {
+    background-color: #696969;
+    height: 88vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 100px;
+    color: white;
+    font-family: "Mulish", sans-serif;
+    padding: 30px 0;
+  }

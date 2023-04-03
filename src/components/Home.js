@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Cabecalho from "./Cabecalho"
 import Avatar from "./assets/avatar.png"
 import "../style.css"
@@ -19,7 +20,7 @@ const Home = () =>{
             </div>
             <div class="container" id="entrar">
                 <h1>Acesse o aplicativo aqui:</h1>
-                <button>ENTRAR</button>
+                <Link to='/playlists'><button>ENTRAR</button></Link>
             </div>
         </main>
     );
