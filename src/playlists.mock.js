@@ -1,29 +1,63 @@
-import RockAndRoll from './components/assets/rock-and-roll.jpeg';
-
 const Playlists = [
     {
         id: 1,
-        titulo: 'Melhores do ano 2022',
-        capa: {RockAndRoll},
+        titulo: 'Rock and Roll',
+        capa: '../arqvsMock/rock-and-roll.jpeg',
         musicas: [
             {
                 id: 1,
-                nome: "",
-                cantor: "",
-                arq: ""
+                nome: "Stairway to heaven",
+                cantor: "Led Zeppelin",
+                arq: "../arqvsMock/StairwayToHeaven.mp3"
+            },
+            {
+                id: 2,
+                nome: "Don't stop me now",
+                cantor: "Queen",
+                arq: "../arqvsMock/DontStopMeNow.mp3"
+            },
+            {
+                id: 3,
+                nome: "All my loving",
+                cantor: "The Beatles",
+                arq: "../arqvsMock/AllMyLoving.mp3"
+            },
+            {
+                id: 4,
+                nome: "Ziggy Stardust",
+                cantor: "David Bowie",
+                arq: "../arqvsMock/Ziggy.mp3"
             }
         ]
     },
 
     {
         id: 2,
-        titulo: 'Melhores do ano 2021',
-        capa: "",
+        titulo: 'Pop',
+        capa: "../arqvsMock/pop.jpg",
         musicas: [
             {
                 id: 1,
-                nome: "",
-                cantor: "",
+                nome: "Need to know",
+                cantor: "Doja Cat",
+                arq: ""
+            },
+            {
+                id: 2,
+                nome: "MONTERO (Call me by your name)",
+                cantor: "Lil Nas X",
+                arq: ""
+            },
+            {
+                id: 3,
+                nome: "Bad Romance",
+                cantor: "Lady Gaga",
+                arq: ""
+            },
+            {
+                id: 4,
+                nome: "Anti-hero",
+                cantor: "Taylor Swift",
                 arq: ""
             }
         ]
@@ -31,27 +65,63 @@ const Playlists = [
 
     {
         id: 3,
-        titulo: 'Melhores do ano 2020',
-        capa: "",
+        titulo: 'MPB',
+        capa: "../arqvsMock/mpb.jpg",
         musicas: [
             {
                 id: 1,
-                nome: "",
-                cantor: "",
-                arq: ""
+                nome: "Construção",
+                cantor: "Chico Buarque",
+                arq: "../arqvsMock/Construcao.mp3"
+            },
+            {
+                id: 2,
+                nome: "Partilhar",
+                cantor: "Rubel",
+                arq: "../arqvsMock/Partilhar.mp3"
+            },
+            {
+                id: 3,
+                nome: "Garota de Ipanema",
+                cantor: "Tom Jobim",
+                arq: "../arqvsMock/GarotaDeIpanema.mp3"
+            },
+            {
+                id: 4,
+                nome: "Chega de saudade",
+                cantor: "João Gilberto",
+                arq: "../arqvsMock/ChegaDeSaudade.mp3"
             }
         ]
     },
 
     {
         id: 4,
-        titulo: 'Melhores do ano 2019',
-        capa: "",
+        titulo: 'Metal',
+        capa: "../arqvsMock/metal.jpg",
         musicas: [
             {
                 id: 1,
-                nome: "",
-                cantor: "",
+                nome: "Fear of the dark",
+                cantor: "Iron Maiden",
+                arq: ""
+            },
+            {
+                id: 2,
+                nome: "Master of Puppets",
+                cantor: "Metallica",
+                arq: ""
+            },
+            {
+                id: 3,
+                nome: "Paranoid",
+                cantor: "Black Sabbath",
+                arq: ""
+            },
+            {
+                id: 4,
+                nome: "Holy Diver",
+                cantor: "Dio",
                 arq: ""
             }
         ]
@@ -59,13 +129,31 @@ const Playlists = [
 
     {
         id: 5,
-        titulo: 'Melhores do ano 2023',
-        capa: "",
+        titulo: 'Sertanejo',
+        capa: "../arqvsMock/sertanejo.png",
         musicas: [
             {
                 id: 1,
-                nome: "",
-                cantor: "",
+                nome: "Evidências",
+                cantor: "Chitãozinho e Xororó",
+                arq: ""
+            },
+            {
+                id: 2,
+                nome: "É o amor",
+                cantor: "Zezé Di Camargo e Luciano",
+                arq: ""
+            },
+            {
+                id: 3,
+                nome: "Saudade da minha vida",
+                cantor: "Gusttavo Lima",
+                arq: ""
+            },
+            {
+                id: 4,
+                nome: "Infiel",
+                cantor: "Marília Mendonça",
                 arq: ""
             }
         ]
@@ -73,13 +161,31 @@ const Playlists = [
 
     {
         id: 6,
-        titulo: 'Melhores do ano 2018',
-        capa: "",
+        titulo: 'Indie',
+        capa: "../arqvsMock/indie.jpg",
         musicas: [
             {
                 id: 1,
-                nome: "",
-                cantor: "",
+                nome: "Line without a hook",
+                cantor: "Ricky Montgomery",
+                arq: ""
+            },
+            {
+                id: 2,
+                nome: "Arabella",
+                cantor: "Arctic Monkeys",
+                arq: ""
+            },
+            {
+                id: 3,
+                nome: "Another girl",
+                cantor: "The Killers",
+                arq: ""
+            },
+            {
+                id: 4,
+                nome: "Under cover of darkness",
+                cantor: "The Strokes",
                 arq: ""
             }
         ]
