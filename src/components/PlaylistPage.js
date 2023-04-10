@@ -10,10 +10,10 @@ const PlaylistPage = () => {
 
     const play = playlist.musicas.map((musica) => {
         return (
-            <>
+            <div class="artist-song">
                 <h2><u>{musica.nome}</u> - {musica.cantor}</h2>
                 <audio src={musica.arq} controls></audio>
-            </>
+            </div>
             )
     })
     

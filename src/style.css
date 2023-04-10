@@ -281,5 +281,13 @@
   background-color: #696969;
   font-family: "Mulish", sans-serif;
   color: white;
+  padding: 0 50px 50px 50px;
+  height: 88vh;
+}
 
+.artist-song{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 40px;
 }
