@@ -40,25 +40,25 @@ const Playlists = [
                 id: 1,
                 nome: "Need to know",
                 cantor: "Doja Cat",
-                arq: ""
+                arq: "../arqvsMock/Doja.mp3"
             },
             {
                 id: 2,
                 nome: "MONTERO (Call me by your name)",
                 cantor: "Lil Nas X",
-                arq: ""
+                arq: "../arqvsMock/LilNasX.mp3"
             },
             {
                 id: 3,
                 nome: "Bad Romance",
                 cantor: "Lady Gaga",
-                arq: ""
+                arq: "../arqvsMock/Gaga.mp3"
             },
             {
                 id: 4,
-                nome: "Anti-hero",
+                nome: "Love story",
                 cantor: "Taylor Swift",
-                arq: ""
+                arq: "../arqvsMock/Taylor.mp3"
             }
         ]
     },
@@ -104,25 +104,25 @@ const Playlists = [
                 id: 1,
                 nome: "Fear of the dark",
                 cantor: "Iron Maiden",
-                arq: ""
+                arq: "../arqvsMock/Maiden.mp3"
             },
             {
                 id: 2,
                 nome: "Master of Puppets",
                 cantor: "Metallica",
-                arq: ""
+                arq: "../arqvsMock/Master.mp3"
             },
             {
                 id: 3,
                 nome: "Paranoid",
                 cantor: "Black Sabbath",
-                arq: ""
+                arq: "../arqvsMock/Paranoid.mp3"
             },
             {
                 id: 4,
-                nome: "Holy Diver",
-                cantor: "Dio",
-                arq: ""
+                nome: "Crazy train",
+                cantor: "Ozzy Osbourne",
+                arq: "../arqvsMock/Crazy.mp3"
             }
         ]
     },
