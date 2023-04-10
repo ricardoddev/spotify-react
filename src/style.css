@@ -291,3 +291,21 @@
   align-items: center;
   padding-top: 40px;
 }
+
+.single-playlist button {
+  background: none;
+  border: none;
+  color: #1db954;
+  margin-top: 100px;
+  font-size: 32px;
+  font-family: "Mulish", sans-serif;
+}
+.single-playlist button:hover {
+  background: none;
+  border-bottom: none;
+  color: #1db954;
+  margin-top: 100px;
+  font-size: 32px;
+  font-family: "Mulish", sans-serif;
+  text-decoration: underline;
+}

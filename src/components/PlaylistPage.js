@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import Cabecalho from "./Cabecalho";
 import Playlists from "../playlists.mock";
 import "../style.css";
@@ -16,12 +17,13 @@ const PlaylistPage = () => {
             </div>
             )
     })
-    
+
     return(
         <>
             <Cabecalho />
             <div class="single-playlist">
                 {play}
+                <Link to='/playlists'><button>Voltar</button></Link>
             </div>
         </>
     );
