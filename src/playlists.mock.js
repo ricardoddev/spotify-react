@@ -136,25 +136,25 @@ const Playlists = [
                 id: 1,
                 nome: "Evidências",
                 cantor: "Chitãozinho e Xororó",
-                arq: ""
+                arq: "../arqvsMock/Evidencias.mp3"
             },
             {
                 id: 2,
                 nome: "É o amor",
                 cantor: "Zezé Di Camargo e Luciano",
-                arq: ""
+                arq: "../arqvsMock/Zezedi.mp3"
             },
             {
                 id: 3,
-                nome: "Saudade da minha vida",
-                cantor: "Gusttavo Lima",
-                arq: ""
+                nome: "Não deixo não",
+                cantor: "Mano Walter",
+                arq: "../arqvsMock/NDeixoN.mp3"
             },
             {
                 id: 4,
                 nome: "Infiel",
                 cantor: "Marília Mendonça",
-                arq: ""
+                arq: "../arqvsMock/Infiel.mp3"
             }
         ]
     },
@@ -168,25 +168,25 @@ const Playlists = [
                 id: 1,
                 nome: "Line without a hook",
                 cantor: "Ricky Montgomery",
-                arq: ""
+                arq: "../arqvsMock/LineHook.mp3"
             },
             {
                 id: 2,
                 nome: "Arabella",
                 cantor: "Arctic Monkeys",
-                arq: ""
+                arq: "../arqvsMock/Arabella.mp3"
             },
             {
                 id: 3,
-                nome: "Another girl",
+                nome: "Just another girl",
                 cantor: "The Killers",
-                arq: ""
+                arq: "../arqvsMock/Killers.mp3"
             },
             {
                 id: 4,
                 nome: "Under cover of darkness",
                 cantor: "The Strokes",
-                arq: ""
+                arq: "../arqvsMock/Strokes.mp3"
             }
         ]
     }

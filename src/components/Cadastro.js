@@ -73,7 +73,7 @@ const Cadastro = () => {
           </FormGroup>
           <FormGroup row>
             <Label for="DataEx" sm={3}>
-              Date
+              Data de nascimento
             </Label>
             <Col sm={8}>
               <Input
