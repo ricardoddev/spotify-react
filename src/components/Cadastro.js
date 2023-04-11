@@ -5,11 +5,20 @@ import { useState } from "react";
 
 const Cadastro = () => {
   const customColor = "#1DB954";
-  const [email, setEmail] = useState("a@a.com");
-  const [senha, setSenha] = useState("123");
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const[nome, setNome] = useState("");
+
+  const [userArray, setUserArray] = useState([]);
 
   function handleSubmit(e) {
     e.preventDefault();
+    const newUser = { email, senha, nome};
+    setUserArray([...userArray, newUser]);
+    setEmail('');
+    setSenha('');
+    setNome('');
+    console.log(userArray);
   }
 
   return (
@@ -68,6 +77,8 @@ const Cadastro = () => {
                 id="nome"
                 name="nome"
                 placeholder="Digite seu nome de Usuário"
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
               />
             </Col>
           </FormGroup>
@@ -96,9 +107,7 @@ const Cadastro = () => {
               <Input name="O" type="radio" /> <Label check>Outro</Label>
             </FormGroup>
           </Col>
-        </Form>
-      </div>
-      <div
+          <div
         style={{
           display: "flex",
           justifyContent: "center",
@@ -120,6 +129,9 @@ const Cadastro = () => {
           Já possuo conta
         </a>
       </div>
+        </Form>
+      </div>
+     
     </main>
   );
 };
