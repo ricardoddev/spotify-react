@@ -8,19 +8,25 @@ const Cadastro = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const[nome, setNome] = useState("");
+  const [confirmEmail, setConfirmEmail] = useState("");
 
   const [userArray, setUserArray] = useState([]);
 
+
   function handleSubmit(e) {
     e.preventDefault();
+    if (email !== confirmEmail) {
+      console.log("Os campos de e-mail não correspondem.");
+    } else {
     const newUser = { email, senha, nome};
     setUserArray([...userArray, newUser]);
     setEmail('');
+    setConfirmEmail("");
     setSenha('');
     setNome('');
     console.log(userArray);
   }
-
+  }
   return (
     <main
       style={{
@@ -49,6 +55,21 @@ const Cadastro = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+              />
+            </Col>
+          </FormGroup>
+          <FormGroup row>
+            <Label for="confirmEmail" sm={3}>
+              Confirme o Email
+            </Label>
+            <Col sm={8}>
+              <Input
+                id="confirmEmail"
+                name="confirmEmail"
+                placeholder="digite novamente seu email"
+                type="email"
+                value={confirmEmail}
+                onChange={(e) => setConfirmEmail(e.target.value)}
               />
             </Col>
           </FormGroup>
