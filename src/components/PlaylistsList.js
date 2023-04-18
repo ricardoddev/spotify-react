@@ -1,14 +1,24 @@
 import { Link } from 'react-router-dom';
 import Cabecalho from "./Cabecalho";
-import Playlists from "../playlists.mock";
 import "../style.css";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+//import Playlists from "../playlist.mock";
+
 
 const PlaylistsList = () => {
-    const result = Playlists.map((playlist) => {
+    const [playlists, setPlaylists] = useState([])
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/playlists')
+        .then((res) => setPlaylists(res.data))
+    }, [])
+
+    const result = playlists.map((playlist) => {
         return (
-            <div id="centralizar">
+            <div>
                 <Link to={"/playlists/"+playlist.id}>
-                    <button><img src={playlist.capa} alt="Capa da playlist"  id="images-size"/></button>
+                    <button><img src={playlist.capa} alt="Capa da playlist" id="images-size"/></button>
                 </Link>
                 
                 <h2>{playlist.titulo}</h2>
