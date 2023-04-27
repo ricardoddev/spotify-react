@@ -4,6 +4,7 @@ import Faq from './components/Faq';
 import Cadastro from './components/Cadastro';
 import PlaylistsList from './components/PlaylistsList';
 import PlaylistPage from './components/PlaylistPage';
+import AddPlaylist from './components/AddPlaylist';
 import { Routes, Route } from 'react-router-dom'
 
 export default function App() {
@@ -15,6 +16,8 @@ export default function App() {
         <Route path='/cadastro' element={<Cadastro />}/>
         <Route path='/playlists/' element={<PlaylistsList />}/>
         <Route path='/playlists/:id' element={<PlaylistPage />}/>
+        <Route path='/addplaylist' element={<AddPlaylist />}/>
+
       </Routes>
     </div>
   );

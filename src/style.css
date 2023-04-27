@@ -7,14 +7,14 @@
   @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@500&family=Rajdhani:wght@500&display=swap');
   
   body{
-    height: 100vh;
+    height: 100%;
   }
   
   header {
     display: flex;
     background-color: #1c1c1c;
     width: 100vw;
-    height: 12vh;
+    height: 12%;
   }
   
   header div {
@@ -273,8 +273,14 @@
   }
 
   #images-size {
-    height: 310px;
+    min-height: 310px;
+    max-height: 310px;
     cursor: pointer;
+  }
+
+  #images-size-inside-playlist {
+    min-height: 499px;
+    max-height: 499px;
   }
 
 .single-playlist{
@@ -282,7 +288,9 @@
   font-family: "Mulish", sans-serif;
   color: white;
   padding: 0 50px 50px 50px;
-  height: 88vh;
+  height: 88%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .artist-song{
@@ -292,20 +300,94 @@
   padding-top: 40px;
 }
 
-.single-playlist button {
-  background: none;
-  border: none;
-  color: #1db954;
-  margin-top: 100px;
-  font-size: 32px;
-  font-family: "Mulish", sans-serif;
+#button-back {
+  background-color: #1db954;
+  padding: 20px;
+  cursor: pointer;
+  border: 1px solid #1db954;
+  border-radius: 500px;
+  transition: 0.15s;
+  font-weight: bold;
+  font-size: 24px;
+
 }
-.single-playlist button:hover {
-  background: none;
-  border-bottom: none;
-  color: #1db954;
-  margin-top: 100px;
-  font-size: 32px;
+#button-back:hover {
   font-family: "Mulish", sans-serif;
-  text-decoration: underline;
+  color: #1c1c1c;
+  text-decoration: none;
+  }
+
+.card-playlist {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }
+
+.list-songs {
+  padding-top: 100px;
+}
+
+.minimalist-buttons{
+  height: 100px;
+  width: 100px;
+  font-weight: bold;
+  border-radius: 50%;
+  font-size: 60px;
+  background-color: #1db954;
+}
+
+#formAddPlaylist {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-right: 100px;
+  margin-bottom: 60px;
+}
+
+#formAddPlaylist label {
+  font-family: "Mulish", sans-serif;
+  font-size: 1.75em;
+  text-align: center;
+  color: #1db954;
+}
+
+.bgPadrao {
+  background-color: #696969;
+  width: 100vw;
+  height: 100vh;
+}
+
+.bgPadrao h1 {
+  font-family: "Mulish", sans-serif;
+  font-weight: bold;
+  font-size: 3em;
+  color: #1db954;
+  text-align: center;
+  padding: 60px;
+}
+
+#button-create {
+  background-color: #1db954;
+  padding: 20px;
+  cursor: pointer;
+  border: 1px solid #1db954;
+  border-radius: 500px;
+  transition: 0.15s;
+  font-weight: bold;
+  font-size: 24px;
+  width: 150px;
+}
+#button-create:hover {
+  font-family: "Mulish", sans-serif;
+  color: #1c1c1c;
+  text-decoration: none;
+  }
+
+  .centralizar{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+  }

@@ -1,4 +1,4 @@
-const Playlists = [
+/*const Playlists = [
     {
         id: 1,
         titulo: 'Rock and Roll',
@@ -192,4 +192,4 @@ const Playlists = [
     }
 ]
 
-export default Playlists;
+export default Playlists;*/

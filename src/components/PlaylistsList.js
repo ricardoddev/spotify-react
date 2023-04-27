@@ -3,7 +3,6 @@ import Cabecalho from "./Cabecalho";
 import "../style.css";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-//import Playlists from "../playlist.mock";
 
 
 const PlaylistsList = () => {
@@ -30,6 +29,7 @@ const PlaylistsList = () => {
             <Cabecalho />
             <div class="playlists">
                 {result}
+                <Link to="/addplaylist"><button class="minimalist-buttons">+</button></Link>
             </div>
         </>
     );
