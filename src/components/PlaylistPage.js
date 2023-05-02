@@ -30,17 +30,19 @@ const PlaylistPage = () => {
             <Cabecalho />
                 {playlist && (
                     <div>
-                    <div className="single-playlist">
-                        <div class="card-playlist">
-                            <img src={playlist.capa} alt={playlist.titulo} id='images-size-inside-playlist'/>
-                            <h1>{playlist.titulo}</h1>
+                        <div className="single-playlist">
+                            <div class="card-playlist">
+                                <img src={playlist.capa} alt={playlist.titulo} id='images-size-inside-playlist'/>
+                                <h1>{playlist.titulo}</h1>
+                            </div>
+                            <div class="list-songs">
+                                {play}
+                            </div>
+                            <Link to={`/playlist/${id}/addsong`}><button class="minimalist-buttons">+</button></Link>
                         </div>
-                        <div class="list-songs">
-                            {play}
-                        </div>
+                
+                        <ButtonBack />
                     </div>
-                    <ButtonBack />
-                </div>
                 )}
         </>
     );

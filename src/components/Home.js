@@ -20,7 +20,7 @@ const Home = () =>{
             </div>
             <div class="container" id="entrar">
                 <h1>Acesse o aplicativo aqui:</h1>
-                <Link to='/playlists'><button>ENTRAR</button></Link>
+                <Link to='/login'><button>ENTRAR</button></Link>
             </div>
         </main>
     );

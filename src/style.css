@@ -275,12 +275,14 @@
   #images-size {
     min-height: 310px;
     max-height: 310px;
+    max-width: 350px;
     cursor: pointer;
   }
 
   #images-size-inside-playlist {
     min-height: 499px;
     max-height: 499px;
+    max-width: 550px;
   }
 
 .single-playlist{
@@ -389,5 +391,5 @@
   .centralizar{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    
+    gap: 300px;
   }

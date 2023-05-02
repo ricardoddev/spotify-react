@@ -3,6 +3,7 @@ import Cabecalho from "./Cabecalho";
 import "../style.css";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Search from './Search';
 
 
 const PlaylistsList = () => {
@@ -27,6 +28,7 @@ const PlaylistsList = () => {
     return(
         <>
             <Cabecalho />
+            <Search />
             <div class="playlists">
                 {result}
                 <Link to="/addplaylist"><button class="minimalist-buttons">+</button></Link>

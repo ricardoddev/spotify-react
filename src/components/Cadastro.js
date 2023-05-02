@@ -2,6 +2,7 @@ import Cabecalho from "./Cabecalho";
 import { Button, Form, Label, Col, Input, FormGroup } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
+import axios from "axios";
 
 const Cadastro = () => {
   const customColor = "#1DB954";
@@ -9,22 +10,22 @@ const Cadastro = () => {
   const [senha, setSenha] = useState("");
   const[nome, setNome] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
-
-  const [userArray, setUserArray] = useState([]);
-
+  const [error, setError] = useState(false)
 
   function handleSubmit(e) {
     e.preventDefault();
     if (email !== confirmEmail) {
-      console.log("Os campos de e-mail não correspondem.");
+      setError(true)
     } else {
     const newUser = { email, senha, nome};
-    setUserArray([...userArray, newUser]);
-    setEmail('');
-    setConfirmEmail("");
-    setSenha('');
-    setNome('');
-    console.log(userArray);
+
+    axios.post('http://localhost:3001/users', newUser).then( (res) => {
+      setEmail('');
+      setConfirmEmail("");
+      setSenha('');
+      setNome('');
+      setError(false)
+    })
   }
   }
   return (
@@ -70,7 +71,11 @@ const Cadastro = () => {
                 type="email"
                 value={confirmEmail}
                 onChange={(e) => setConfirmEmail(e.target.value)}
+                style={{ borderColor: error ? "red" : "initial" }}
               />
+              {error && (
+                <p style={{ color: "red" }}>Campos de email diferentes</p>
+                )}
             </Col>
           </FormGroup>
           <FormGroup row>
