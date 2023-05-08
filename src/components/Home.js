@@ -2,8 +2,23 @@ import { Link } from 'react-router-dom';
 import Cabecalho from "./Cabecalho"
 import Avatar from "./assets/avatar.png"
 import "../style.css"
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const Home = () =>{
+
+    const navigate = useNavigate();
+
+  const handleLogin = () => {
+    const usuarioLogado = localStorage.getItem("UsuarioLogado");
+    if (usuarioLogado) {
+        navigate("/playlists");
+    }else{
+    navigate("/login");
+    };
+    }
+
     return (
         <main>
             <Cabecalho />
@@ -20,10 +35,10 @@ const Home = () =>{
             </div>
             <div class="container" id="entrar">
                 <h1>Acesse o aplicativo aqui:</h1>
-                <Link to='/login'><button>ENTRAR</button></Link>
+                <button onClick={handleLogin}>ENTRAR</button>
             </div>
         </main>
     );
 }
 
-export default Home
+export default Home;

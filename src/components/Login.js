@@ -85,6 +85,9 @@ const Login = () => {
               )}
             </Col>
           </FormGroup>
+          <div style={{marginBottom : "15px"}}>
+            <Link to= "/TESTE">Esqueci minha senha</Link>
+          </div>
           <div
             style={{
               display: "flex",

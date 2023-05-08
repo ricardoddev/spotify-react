@@ -3,6 +3,7 @@ import { Button, Form, Label, Col, Input, FormGroup } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Cadastro = () => {
   const customColor = "#1DB954";
@@ -12,21 +13,28 @@ const Cadastro = () => {
   const [confirmEmail, setConfirmEmail] = useState("");
   const [error, setError] = useState(false)
 
+  function validacao() {
+    if (!email || !confirmEmail || !senha || !nome) {
+      return false;
+    }
+    return true;
+  }
+  
   function handleSubmit(e) {
     e.preventDefault();
     if (email !== confirmEmail) {
       setError(true)
-    } else {
-    const newUser = { email, senha, nome};
-
-    axios.post('http://localhost:3001/users', newUser).then( (res) => {
-      setEmail('');
-      setConfirmEmail("");
-      setSenha('');
-      setNome('');
-      setError(false)
-    })
-  }
+    } else if (validacao()) {
+      const newUser = { email, senha, nome};
+  
+      axios.post('http://localhost:3001/users', newUser).then( (res) => {
+        setEmail('');
+        setConfirmEmail("");
+        setSenha('');
+        setNome('');
+        setError(false)
+      })
+    }
   }
   return (
     <main
@@ -151,9 +159,11 @@ const Cadastro = () => {
         >
           Inscrever-se
         </Button>
+        <Link to= "/login" >
         <a href="#" style={{ color: "#1DB954" }}>
           Já possuo conta
         </a>
+        </Link>
       </div>
         </Form>
       </div>

@@ -1,10 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "./assets/logo.png";
 import "../style.css";
 
 const Cabecalho = () => {
-  const t = JSON.parse(localStorage.getItem("UsuarioLogado"));
+  const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado"));
+  const navigate = useNavigate();
+
+  const Sair = () => {
+    localStorage.removeItem("UsuarioLogado");
+    navigate(-2);
+    //window.location.reload();
+  };
 
   return (
     <header>
@@ -14,21 +21,21 @@ const Cabecalho = () => {
         </Link>
         <span>
           <Link to="/faq">Dúvidas Frequentes</Link>
-          {teste(t)}
+          {usuarioLogado ? (
+            <>
+            <span style={{color : "white"}}>{usuarioLogado.nome}</span>
+
+            <Link to="/Usuario">Conta</Link>
+            <Link onClick={Sair}>Sair</Link>
+            </>
+          ) : (
+            <Link to="/cadastro">Cadastre-se</Link>
+          )}
+          
         </span>
       </div>
     </header>
   );
 };
-function teste(UsuarioLogado) {
-  if (UsuarioLogado.nome === null) {
-    return (
-      <div>
-        <Link to="/cadastro">Cadastre-se</Link>
-      </div>
-    );
-  } else {
-    return <h1>{UsuarioLogado["nome"]}</h1>;
-  }
-}
+
 export default Cabecalho;
