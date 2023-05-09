@@ -229,6 +229,14 @@
       "senha": "123",
       "nome": "pedro",
       "id": 5
+    },
+    {
+      "email": "caio@teste.com",
+      "senha": "123",
+      "nome": "Caio",
+      "Data": "2004-02-20",
+      "genero": "masculino",
+      "id": 6
     }
   ]
 }

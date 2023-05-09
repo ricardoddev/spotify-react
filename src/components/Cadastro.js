@@ -11,13 +11,19 @@ const Cadastro = () => {
   const [senha, setSenha] = useState("");
   const[nome, setNome] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
-  const [error, setError] = useState(false)
+  const [error, setError] = useState(false);
+  const [Data, setData] = useState("");
+  const [genero, setGenero] =  useState("");
 
   function validacao() {
-    if (!email || !confirmEmail || !senha || !nome) {
+    if (!email || !confirmEmail || !senha || !nome || !Data) {
       return false;
     }
     return true;
+  } 
+
+  function Generos(event){
+    setGenero(event.target.value);
   }
   
   function handleSubmit(e) {
@@ -25,13 +31,15 @@ const Cadastro = () => {
     if (email !== confirmEmail) {
       setError(true)
     } else if (validacao()) {
-      const newUser = { email, senha, nome};
+      const newUser = { email, senha, nome, Data, genero};
   
       axios.post('http://localhost:3001/users', newUser).then( (res) => {
         setEmail('');
-        setConfirmEmail("");
+        setConfirmEmail('');
         setSenha('');
         setNome('');
+        setData('');
+        setGenero('');
         setError(false)
       })
     }
@@ -126,19 +134,21 @@ const Cadastro = () => {
                 name="data"
                 placeholder="date placeholder"
                 type="date"
+                value={Data}
+                onChange={(e) => setData(e.target.value)}
               />
             </Col>
           </FormGroup>
           <legend className="col-form-label col-sm-5">Qual seu gênero?</legend>
           <Col sm={8}>
             <FormGroup check>
-              <Input name="M" type="radio" /> <Label check>Masculino</Label>
+              <Input name="genero" type="radio" value="masculino" onChange={Generos}/> <Label check>Masculino</Label>
             </FormGroup>
             <FormGroup check>
-              <Input name="F" type="radio" /> <Label check>Feminino</Label>
+              <Input name="genero" type="radio" value="feminino" onChange={Generos}/> <Label check>Feminino</Label>
             </FormGroup>
             <FormGroup check>
-              <Input name="O" type="radio" /> <Label check>Outro</Label>
+              <Input name="genero" type="radio" value="outro" onChange={Generos}/> <Label check>Outro</Label>
             </FormGroup>
           </Col>
           <div

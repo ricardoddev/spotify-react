@@ -388,6 +388,6 @@ main {
   gap: 300px;
 }
 .rotate {
-  transform: rotate(45deg);
+  transform: rotate(180deg);
   transition: transform 0.2s ease-in-out;
 }
