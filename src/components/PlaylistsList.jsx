@@ -28,7 +28,10 @@ const PlaylistsList = () => {
     return(
         <>
             <Cabecalho />
-            <Search />
+            <div style={{backgroundColor: "#696969", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column"}} >
+                <Search />
+                <Link to='/apagarplaylist'><button id="button-back" style={{margin: "50px 0 30px"}}>Deletar playlist</button></Link>
+            </div>
             <div class="playlists">
                 {result}
                 <Link to="/addplaylist"><button class="minimalist-buttons">+</button></Link>

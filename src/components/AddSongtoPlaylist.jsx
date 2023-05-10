@@ -20,11 +20,16 @@ const AddSongToPlaylist = () => {
         };
       
         const url = `http://localhost:3001/playlists/${id}`;
-        axios.post(url, novaMusica).then(() => {
-          setMusica("");
-          setBanda("");
-          setArquivo("");
-        });
+        axios.get(url).then((res) => {
+          const play = res.data
+          play.musicas.push(novaMusica)
+          
+          axios.patch(url, play).then(() => {
+            setMusica("")
+            setBanda("")
+            setArquivo("")
+          })
+        })
       };
   
     return (
@@ -57,7 +62,7 @@ const AddSongToPlaylist = () => {
           />
           <div className="centralizar">
             <ButtonBack />
-            <ButtonCreate />
+            <ButtonCreate>Adicionar</ButtonCreate>
           </div>
         </form>
       </div>

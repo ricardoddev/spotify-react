@@ -30,7 +30,7 @@ const AddPlaylist = () => {
                 <label for="capa">Foto da capa</label><input id='capa' type="text" name="capa" value={capa} onChange={(e) => setCapa(e.target.value)}/>
                 <div class="centralizar">
                     <ButtonBack />
-                    <ButtonCreate onClick={handleSubmit}/>
+                    <ButtonCreate>Criar</ButtonCreate>
                 </div>            
             </form>
         </div>

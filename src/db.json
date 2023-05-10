@@ -185,18 +185,6 @@
           "arq": "../arqvsMock/Strokes.mp3"
         }
       ]
-    },
-    {
-      "titulo": "Nova playlist",
-      "capa": "../arqvsMock/show.png",
-      "musicas": [],
-      "id": 7
-    },
-    {
-      "titulo": "Teste",
-      "capa": "../arqvsMock/show2.png",
-      "musicas": [],
-      "id": 8
     }
   ],
   "users": [

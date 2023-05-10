@@ -16,7 +16,7 @@ const Search = () => {
   };
 
   return (
-    <div  style={{ backgroundColor: "#696969", display: "flex", alignItems: "center", justifyContent: "center"}}>
+    <div  style={{ display: "flex", alignItems: "center", justifyContent: "center"}}>
       <form onSubmit={handleSubmit}>
         <label htmlFor="pesquisar" style={{ color: "white", fontWeight: "bold", fontSize: "32px", marginRight: "10px"}}>Pesquisar</label>
         <input
