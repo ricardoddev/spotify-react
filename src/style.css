@@ -159,100 +159,6 @@ main {
   margin-top: 10px;
 }
 
-#faq {
-  background-color: #92ad94;
-  height: 100%;
-  padding-bottom: 82.8px;
-}
-
-#faq h2 {
-  font-family: "Rajdhani", sans-serif;
-  font-size: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 50px 0;
-  margin: 0 auto;
-}
-
-#faq h1 {
-  font-size: 48px;
-  font-family: "Mulish", sans-serif;
-  width: 20vw;
-  margin: 0 auto;
-}
-
-#duvidas {
-  display: grid;
-  grid-template-areas:
-    "d1 d2 d3"
-    "r1 r2 r3"
-    "d4 d5 d6"
-    "r4 r5 r6";
-  margin: 100px;
-  justify-content: space-evenly;
-  row-gap: 50px;
-  column-gap: 50px;
-}
-
-#duvida1 {
-  grid-area: d1;
-}
-
-#duvida2 {
-  grid-area: d2;
-}
-
-#duvida3 {
-  grid-area: d3;
-}
-
-#duvida4 {
-  grid-area: d4;
-}
-
-#duvida5 {
-  grid-area: d5;
-}
-
-#duvida6 {
-  grid-area: d6;
-}
-
-#resposta1 {
-  grid-area: r1;
-}
-
-#resposta2 {
-  grid-area: r2;
-}
-
-#resposta3 {
-  grid-area: r3;
-}
-
-#resposta4 {
-  grid-area: r4;
-}
-
-#resposta5 {
-  grid-area: r5;
-}
-
-#resposta6 {
-  grid-area: r6;
-}
-
-#duvidas li {
-  list-style-type: none;
-  font-size: 20px;
-  font-family: "Mulish", sans-serif;
-}
-
-#duvidas p {
-  font-family: "Mulish", sans-serif;
-  color: #36413e;
-}
 
 .playlists {
   background-color: #696969;
@@ -390,4 +296,45 @@ main {
 .rotate {
   transform: rotate(180deg);
   transition: transform 0.2s ease-in-out;
+}
+
+
+.faq {
+  background-color: #92ad94;
+  height: 100%;
+  padding-bottom: 82.8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.faq h2 {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 36px;
+  padding: 50px 0;
+}
+
+.info-box-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 50px;
+  column-gap: 30px;
+  margin: 0 30px 0 30px;
+}
+
+.info-box button {
+  width: 50px;
+  background-color: #1db954;
+  border-radius: 10px;
+}
+
+.info-box div p {
+  color: #fff;
+  font-weight: bold;
+}
+
+#preencher-bg {
+  background-color: #92ad94;
+  height: 200px;
 }

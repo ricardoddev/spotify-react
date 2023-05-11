@@ -8,7 +8,6 @@ import AddPlaylist from "./components/AddPlaylist";
 import Login from "./components/Login";
 import { Routes, Route } from "react-router-dom";
 import AddSongToPlaylist from "./components/AddSongtoPlaylist";
-import Faq2 from "./components/TesteFaq";
 import Usuario from "./components/Usuario";
 import DeletePlaylist from "./components/DeletePlaylist";
 
@@ -17,14 +16,13 @@ export default function App() {
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/faq" element={<Faq />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/login" element={<Login />} />
         <Route path="/playlists/" element={<PlaylistsList />} />
         <Route path="/playlists/:id" element={<PlaylistPage />} />
         <Route path="/addplaylist" element={<AddPlaylist />} />
         <Route path="playlist/:id/addsong" element={<AddSongToPlaylist />} />
-        <Route path="/faq2" element={<Faq2 />} />
+        <Route path="/faq" element={<Faq />} />
         <Route path="/Usuario" element={<Usuario />} />
         <Route path="/apagarplaylist" element={<DeletePlaylist />} />
       </Routes>
