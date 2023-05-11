@@ -23,7 +23,7 @@ const Cabecalho = () => {
           <Link to="/faq">Dúvidas Frequentes</Link>
           {usuarioLogado ? (
             <>
-            <span style={{color : "white"}}>{usuarioLogado.nome}</span>
+            <span style={{color : "#1db954", fontWeight: "bold"}}>{usuarioLogado.nome}</span>
 
             <Link to="/Usuario">Conta</Link>
             <Link onClick={Sair}>Sair</Link>

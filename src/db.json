@@ -225,6 +225,22 @@
       "Data": "2004-02-20",
       "genero": "masculino",
       "id": 6
+    },
+    {
+      "email": "ricardo@r.com",
+      "senha": "123",
+      "nome": "ricardo",
+      "Data": "2023-05-05",
+      "genero": "masculino",
+      "id": 7
+    },
+    {
+      "email": "isabelle@i.com",
+      "senha": "123",
+      "nome": "tozoeki",
+      "Data": "2023-05-10",
+      "genero": "feminino",
+      "id": 8
     }
   ]
 }

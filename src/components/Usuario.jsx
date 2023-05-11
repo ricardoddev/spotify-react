@@ -20,53 +20,55 @@ const Usuario = () => {
   return (
     <>
       <Cabecalho />
-      <h1>Editar Usuário</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">E-mail:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={usuario.email}
-          onChange={handleChange}
-        />
-        <br />
-        <label htmlFor="senha">Senha:</label>
-        <input
-          type="password"
-          id="senha"
-          name="senha"
-          value={usuario.senha}
-          onChange={handleChange}
-        />
-        <br />
-        <label htmlFor="nome">Nome:</label>
-        <input
-          type="text"
-          id="nome"
-          name="nome"
-          value={usuario.nome}
-          onChange={handleChange}
-        />
-        <br />
-        <label htmlFor="data">Data de Nascimento:</label>
-        <input
-          type="date"
-          id="data"
-          name="Data"
-          value={usuario.Data}
-          onChange={handleChange}
-        />
-        <br />
-        <label htmlFor="genero">Gênero:</label>
-        <select id="genero" name="genero" value={usuario.genero} onChange={handleChange}>
-          <option value="masculino">Masculino</option>
-          <option value="feminino">Feminino</option>
-          <option value="outro">Outro</option>
-        </select>
-        <br />
-        <button type="submit">Atualizar</button>
-      </form>
+      <div className="edit-user">
+        <h1>Editar Usuário</h1>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="email">E-mail</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={usuario.email}
+            onChange={handleChange}
+          />
+          <br />
+          <label htmlFor="senha">Senha</label>
+          <input
+            type="password"
+            id="senha"
+            name="senha"
+            value={usuario.senha}
+            onChange={handleChange}
+          />
+          <br />
+          <label htmlFor="nome">Nome</label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            value={usuario.nome}
+            onChange={handleChange}
+          />
+          <br />
+          <label htmlFor="data">Data de Nascimento</label>
+          <input
+            type="date"
+            id="data"
+            name="Data"
+            value={usuario.Data}
+            onChange={handleChange}
+          />
+          <br />
+          <label htmlFor="genero">Gênero</label>
+          <select id="genero" name="genero" value={usuario.genero} onChange={handleChange}>
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+            <option value="outro">Outro</option>
+          </select>
+          <br />
+          <button type="submit">Atualizar</button>
+        </form>
+      </div>
     </>
   );
 };

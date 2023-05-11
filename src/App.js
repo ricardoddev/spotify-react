@@ -23,7 +23,7 @@ export default function App() {
         <Route path="/addplaylist" element={<AddPlaylist />} />
         <Route path="playlist/:id/addsong" element={<AddSongToPlaylist />} />
         <Route path="/faq" element={<Faq />} />
-        <Route path="/Usuario" element={<Usuario />} />
+        <Route path="/usuario" element={<Usuario />} />
         <Route path="/apagarplaylist" element={<DeletePlaylist />} />
       </Routes>
     </div>
