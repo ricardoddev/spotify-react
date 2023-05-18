@@ -1,0 +1,236 @@
+const express = require('express');
+const app = express();
+
+app.use(express.json())
+
+
+const usuarios = [
+    {"id": 1, "email": "teste@te.com", "senha": "1234", "nome": "pedro","Data" : "2000-09-29", "genero" : "masculino"},
+    {"id": 2, "email": "caio@teste.com", "senha": "123", "nome": "Caio", "Data": "2004-02-20","genero": "masculino"}
+]
+
+const playlists = [
+    {
+      "id": 1,
+      "titulo": "Rock and Roll",
+      "capa": "../arqvsMock/rock-and-roll.jpeg",
+      "musicas": [
+        {
+          "id": 1,
+          "nome": "Stairway to heaven",
+          "cantor": "Led Zeppelin",
+          "arq": "../arqvsMock/StairwayToHeaven.mp3"
+        },
+        {
+          "id": 2,
+          "nome": "Don't stop me now",
+          "cantor": "Queen",
+          "arq": "../arqvsMock/DontStopMeNow.mp3"
+        },
+        {
+          "id": 3,
+          "nome": "All my loving",
+          "cantor": "The Beatles",
+          "arq": "../arqvsMock/AllMyLoving.mp3"
+        },
+        {
+          "id": 4,
+          "nome": "Ziggy Stardust",
+          "cantor": "David Bowie",
+          "arq": "../arqvsMock/Ziggy.mp3"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "titulo": "Pop",
+      "capa": "../arqvsMock/pop.jpg",
+      "musicas": [
+        {
+          "id": 1,
+          "nome": "Need to know",
+          "cantor": "Doja Cat",
+          "arq": "../arqvsMock/Doja.mp3"
+        },
+        {
+          "id": 2,
+          "nome": "MONTERO (Call me by your name)",
+          "cantor": "Lil Nas X",
+          "arq": "../arqvsMock/LilNasX.mp3"
+        },
+        {
+          "id": 3,
+          "nome": "Bad Romance",
+          "cantor": "Lady Gaga",
+          "arq": "../arqvsMock/Gaga.mp3"
+        },
+        {
+          "id": 4,
+          "nome": "Love story",
+          "cantor": "Taylor Swift",
+          "arq": "../arqvsMock/Taylor.mp3"
+        }
+      ]
+    },
+]
+
+const songs = [
+        {
+          "id": 1,
+          "nome": "Need to know",
+          "cantor": "Doja Cat",
+          "arq": "../arqvsMock/Doja.mp3"
+        },
+        {
+          "id": 2,
+          "nome": "MONTERO (Call me by your name)",
+          "cantor": "Lil Nas X",
+          "arq": "../arqvsMock/LilNasX.mp3"
+        },
+        {
+          "id": 3,
+          "nome": "Bad Romance",
+          "cantor": "Lady Gaga",
+          "arq": "../arqvsMock/Gaga.mp3"
+        },
+        {
+          "id": 4,
+          "nome": "Love story",
+          "cantor": "Taylor Swift",
+          "arq": "../arqvsMock/Taylor.mp3"
+        }
+      ]
+
+app.get("/", (req, res) =>{
+    res.send("Oi tudo certo?")
+})
+
+
+app.get('/usuario', (req, res) => {
+    res.status(200).send(usuarios)
+})
+
+app.post("/usuario", (req, res) => {
+    const {id, email, senha, nome,Data, genero} = req.body;
+
+    const usuario = {
+        id,
+        email,
+        senha,
+        nome,
+        Data,
+        genero
+        
+    }
+    usuarios.push(usuario)
+    res.status(201).send("Usuario cadastrado com sucesso! :)");
+})
+
+app.get('/usuariologado', (req, res) => {
+    const email = req.query.email;
+    const usuarioEncontrado = usuarios.find((usuario) => usuario.email === email);
+  
+    if (usuarioEncontrado) {
+      res.status(200).send('Usuário logado',  res.json(usuarioEncontrado) );
+
+      
+    } else {
+      res.status(404).send('Usuário não encontrado');
+    }
+  });
+  
+app.put("/usuarios/:id", (req, res) => {
+    const { id } = req.params;
+    const {email, senha, nome,Data, genero} = req.body;
+
+    const AttUser = {
+        id,
+        email,
+        senha,
+        nome,
+        Data,
+        genero
+    } 
+
+    const UsuarioIndex = usuarios.findIndex(User  => User.id == id)
+
+    usuarios[UsuarioIndex] = AttUser;
+
+    return res.json(AttUser)
+})
+
+app.get('/playlists', (req, res) => {
+    res.status(200).send(playlists)
+})
+
+app.get(`/playlists/:id`, (req, res) => {
+    const { id } = req.params;
+    const PlaylistIndex = playlists.findIndex(Playlist  => Playlist.id == id)
+    res.status(200).send(playlists[PlaylistIndex])
+})
+
+
+  app.post("/playlists", (req, res) => {
+    const { id, titulo, capa, musicas} = req.body;
+
+    const newPlaylist = {
+        id,
+        titulo,
+        capa,
+        musicas
+    }
+    playlists.push(newPlaylist)
+    res.status(201).send("Playlist cadastrada com sucesso! xD");
+})
+
+    app.patch(`/playlists/:idPlaylist`, (req, res) =>{
+        const { idPlaylist } = req.params;
+        const PlaylistIndex = playlists.find(Playlist  => Playlist.id == idPlaylist)
+
+        const { id, nome, cantor, arq} = req.body;
+
+        const newMusica = {
+            id,
+            nome,
+            cantor,
+            arq
+        }
+        PlaylistIndex.musicas.push(newMusica)
+
+        res.send("Deu certo paizao")
+    })
+
+app.get('/musicas', (req, res) => {
+  const search = req.query.search;
+    
+  const musicasEncontradas = [];
+
+  playlists.forEach((playlist) => {
+    const musicasPlaylist = playlist.musicas.filter((musica) =>
+      musica.nome.toLowerCase().includes(search.toLowerCase())
+    );
+    musicasEncontradas.push(...musicasPlaylist);
+  });
+    
+  if (musicasEncontradas.length > 0) {
+    res.status(200).json(musicasEncontradas);
+  } else {
+    res.status(404).send('Nenhuma música encontrada');
+  }
+});
+
+app.delete('/playlists/:id', (req, res) => {
+  const { id } = req.params;
+  const playlistIndex = playlists.findIndex(Playlist  => Playlist.id == id) // se o id da playlist n for encontrado, findIndex retorna -1
+
+  if (playlistIndex !== -1) {
+    playlists.splice(playlistIndex, 1);
+    res.status(200).send("Playlist deletada");
+  } else {
+    res.status(404).send("Playlist não encontrada");
+  }
+})
+
+app.listen(3000, () => {
+    console.log('Servidor iniciado na porta 3000');
+  });
