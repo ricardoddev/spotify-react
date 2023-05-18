@@ -74,33 +74,6 @@ const playlists = [
     },
 ]
 
-const songs = [
-        {
-          "id": 1,
-          "nome": "Need to know",
-          "cantor": "Doja Cat",
-          "arq": "../arqvsMock/Doja.mp3"
-        },
-        {
-          "id": 2,
-          "nome": "MONTERO (Call me by your name)",
-          "cantor": "Lil Nas X",
-          "arq": "../arqvsMock/LilNasX.mp3"
-        },
-        {
-          "id": 3,
-          "nome": "Bad Romance",
-          "cantor": "Lady Gaga",
-          "arq": "../arqvsMock/Gaga.mp3"
-        },
-        {
-          "id": 4,
-          "nome": "Love story",
-          "cantor": "Taylor Swift",
-          "arq": "../arqvsMock/Taylor.mp3"
-        }
-      ]
-
 app.get("/", (req, res) =>{
     res.send("Oi tudo certo?")
 })
