@@ -1,78 +1,9 @@
 const express = require('express');
 const app = express();
+const client = require('./db');
 
 app.use(express.json())
 
-
-const usuarios = [
-    {"id": 1, "email": "teste@te.com", "senha": "1234", "nome": "pedro","Data" : "2000-09-29", "genero" : "masculino"},
-    {"id": 2, "email": "caio@teste.com", "senha": "123", "nome": "Caio", "Data": "2004-02-20","genero": "masculino"}
-]
-
-const playlists = [
-    {
-      "id": 1,
-      "titulo": "Rock and Roll",
-      "capa": "../arqvsMock/rock-and-roll.jpeg",
-      "musicas": [
-        {
-          "id": 1,
-          "nome": "Stairway to heaven",
-          "cantor": "Led Zeppelin",
-          "arq": "../arqvsMock/StairwayToHeaven.mp3"
-        },
-        {
-          "id": 2,
-          "nome": "Don't stop me now",
-          "cantor": "Queen",
-          "arq": "../arqvsMock/DontStopMeNow.mp3"
-        },
-        {
-          "id": 3,
-          "nome": "All my loving",
-          "cantor": "The Beatles",
-          "arq": "../arqvsMock/AllMyLoving.mp3"
-        },
-        {
-          "id": 4,
-          "nome": "Ziggy Stardust",
-          "cantor": "David Bowie",
-          "arq": "../arqvsMock/Ziggy.mp3"
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "titulo": "Pop",
-      "capa": "../arqvsMock/pop.jpg",
-      "musicas": [
-        {
-          "id": 1,
-          "nome": "Need to know",
-          "cantor": "Doja Cat",
-          "arq": "../arqvsMock/Doja.mp3"
-        },
-        {
-          "id": 2,
-          "nome": "MONTERO (Call me by your name)",
-          "cantor": "Lil Nas X",
-          "arq": "../arqvsMock/LilNasX.mp3"
-        },
-        {
-          "id": 3,
-          "nome": "Bad Romance",
-          "cantor": "Lady Gaga",
-          "arq": "../arqvsMock/Gaga.mp3"
-        },
-        {
-          "id": 4,
-          "nome": "Love story",
-          "cantor": "Taylor Swift",
-          "arq": "../arqvsMock/Taylor.mp3"
-        }
-      ]
-    },
-]
 
 app.get("/", (req, res) =>{
     res.send("Oi tudo certo?")
@@ -132,8 +63,10 @@ app.put("/usuarios/:id", (req, res) => {
     return res.json(AttUser)
 })
 
-app.get('/playlists', (req, res) => {
-    res.status(200).send(playlists)
+app.get('/playlists', async (req, res) => {
+  await client.connect()
+  const plays = await client.db("spotify").collection("playlists").find().toArray()
+  res.json(plays)
 })
 
 app.get(`/playlists/:id`, (req, res) => {
@@ -143,47 +76,43 @@ app.get(`/playlists/:id`, (req, res) => {
 })
 
 
-  app.post("/playlists", (req, res) => {
-    const { id, titulo, capa, musicas} = req.body;
-
-    const newPlaylist = {
-        id,
-        titulo,
-        capa,
-        musicas
-    }
-    playlists.push(newPlaylist)
-    res.status(201).send("Playlist cadastrada com sucesso! xD");
+app.post("/playlists", (req, res) => {
+  const { id, titulo, capa, musicas} = req.body;
+  const newPlaylist = {
+      id,
+      titulo,
+      capa,
+      musicas
+  }
+  playlists.push(newPlaylist)
+  res.status(201).send("Playlist cadastrada com sucesso! xD");
 })
 
-    app.patch(`/playlists/:idPlaylist`, (req, res) =>{
-        const { idPlaylist } = req.params;
-        const PlaylistIndex = playlists.find(Playlist  => Playlist.id == idPlaylist)
+app.patch(`/playlists/:idPlaylist`, (req, res) =>{
+  const { idPlaylist } = req.params;
 
-        const { id, nome, cantor, arq} = req.body;
+  const PlaylistIndex = playlists.find(Playlist  => Playlist.id == idPlaylist)
 
-        const newMusica = {
-            id,
-            nome,
-            cantor,
-            arq
-        }
-        PlaylistIndex.musicas.push(newMusica)
+  const { id, nome, cantor, arq} = req.body;
 
-        res.send("Deu certo paizao")
-    })
+  const newMusica = {
+      id,
+      nome,
+      cantor,
+      arq
+  }
+
+  PlaylistIndex.musicas.push(newMusica)
+
+  res.send("Deu certo paizao")
+})
 
 app.get('/musicas', (req, res) => {
   const search = req.query.search;
-    
-  const musicasEncontradas = [];
 
-  playlists.forEach((playlist) => {
-    const musicasPlaylist = playlist.musicas.filter((musica) =>
-      musica.nome.toLowerCase().includes(search.toLowerCase())
-    );
-    musicasEncontradas.push(...musicasPlaylist);
-  });
+  const musicasEncontradas = songs.filter((musica) =>
+    musica.nome.toLowerCase().includes(search.toLowerCase())
+  );
     
   if (musicasEncontradas.length > 0) {
     res.status(200).json(musicasEncontradas);
@@ -204,6 +133,6 @@ app.delete('/playlists/:id', (req, res) => {
   }
 })
 
-app.listen(3000, () => {
-    console.log('Servidor iniciado na porta 3000');
-  });
+app.listen(3001, () => {
+  console.log('Servidor iniciado na porta 3001');
+});

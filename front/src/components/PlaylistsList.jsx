@@ -29,7 +29,7 @@ const PlaylistsList = () => {
         <>
             <Cabecalho />
             <div style={{backgroundColor: "#696969", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column"}} >
-                <Search />
+                <Link to='/musicas'><button id="button-back" style={{margin: "50px 0 30px"}}>Buscar Música</button></Link>
                 <Link to='/apagarplaylist'><button id="button-back" style={{margin: "50px 0 30px"}}>Deletar playlist</button></Link>
             </div>
             <div class="playlists">

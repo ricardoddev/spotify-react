@@ -10,6 +10,7 @@ import { Routes, Route } from "react-router-dom";
 import AddSongToPlaylist from "./components/AddSongtoPlaylist";
 import Usuario from "./components/Usuario";
 import DeletePlaylist from "./components/DeletePlaylist";
+import Search from "./components/Search";
 
 export default function App() {
   return (
@@ -25,6 +26,8 @@ export default function App() {
         <Route path="/faq" element={<Faq />} />
         <Route path="/usuario" element={<Usuario />} />
         <Route path="/apagarplaylist" element={<DeletePlaylist />} />
+        <Route path="/musicas" element={<Search />} />
+
       </Routes>
     </div>
   );
