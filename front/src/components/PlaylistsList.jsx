@@ -3,7 +3,6 @@ import Cabecalho from "./Cabecalho";
 import "../style.css";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import Search from './Search';
 
 
 const PlaylistsList = () => {
@@ -17,7 +16,7 @@ const PlaylistsList = () => {
     const result = playlists.map((playlist) => {
         return (
             <div>
-                <Link to={"/playlists/"+playlist.id}>
+                <Link to={"/playlists/"+playlist._id}>
                     <button><img src={playlist.capa} alt="Capa da playlist" id="images-size"/></button>
                 </Link>
                 
