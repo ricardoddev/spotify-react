@@ -114,7 +114,7 @@ app.patch(`/playlists/:idPlaylist`, async (req, res) =>{
 
   if (playlist) {
     const newMusica = {
-      id: new ObjectId,
+      id: new ObjectId(),
       nome,
       cantor,
       arq
@@ -138,12 +138,13 @@ app.patch(`/playlists/:idPlaylist`, async (req, res) =>{
 
 app.get('/musicas', async (req, res) => {
   const search = req.query.search;
+  const regex = new RegExp(search, 'i');
   
   await client.connect()
     const musicas = await client
     .db('spotify')
     .collection('songs')
-    .find({nome: {$regex: search}}).toArray();
+    .find({nome: {$regex: regex}}).toArray();
     
   res.send(musicas)
 });

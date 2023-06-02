@@ -11,26 +11,24 @@ const AddSongToPlaylist = () => {
     const { id } = useParams();
   
     const handleSubmit = (e) => {
-        e.preventDefault();
-      
-        const novaMusica = {
-          nome: musica,
-          cantor: banda,
-          arq: arquivo
-        };
-      
-        const url = `http://localhost:3001/playlists/${id}`;
-        axios.get(url).then((res) => {
-          const play = res.data
-          play.musicas.push(novaMusica)
-          
-          axios.patch(url, play).then(() => {
-            setMusica("")
-            setBanda("")
-            setArquivo("")
-          })
-        })
+      e.preventDefault();
+    
+      const novaMusica = {
+        nome: musica,
+        cantor: banda,
+        arq: arquivo
       };
+    
+      const url = `http://localhost:3001/playlists/${id}`;
+  
+
+        axios.patch(url, novaMusica).then(() => {
+          setMusica("");
+          setBanda("");
+          setArquivo("");
+          alert("Música adicionada com sucesso!")
+        })
+    };
   
     return (
       <div className="bgPadrao">
