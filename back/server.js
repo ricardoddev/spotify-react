@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const client = require('./db');
+const { ObjectId } = require('mongodb')
 
 app.use(express.json())
 
@@ -10,8 +11,10 @@ app.get("/", (req, res) =>{
 })
 
 
-app.get('/usuario', (req, res) => {
-    res.status(200).send(usuarios)
+app.get('/usuario', async (req, res) => {
+  await client.connect()
+  const users = await client.db("spotify").collection("users").find().toArray()
+  res.json(users)
 })
 
 app.post("/usuario", (req, res) => {
@@ -30,18 +33,18 @@ app.post("/usuario", (req, res) => {
     res.status(201).send("Usuario cadastrado com sucesso! :)");
 })
 
-app.get('/usuariologado', (req, res) => {
-    const email = req.query.email;
-    const usuarioEncontrado = usuarios.find((usuario) => usuario.email === email);
-  
-    if (usuarioEncontrado) {
-      res.status(200).send('Usuário logado',  res.json(usuarioEncontrado) );
+app.get('/usuariologado', async (req, res) => {
+  const email = req.query.email;
 
-      
-    } else {
-      res.status(404).send('Usuário não encontrado');
-    }
-  });
+  await client.connect()
+
+  const usuarioEncontrado = await client
+  .db('spotify')
+  .collection('users')
+  .findOne({email : email});
+
+  res.send(usuarioEncontrado)
+});
   
 app.put("/usuarios/:id", (req, res) => {
     const { id } = req.params;
@@ -69,56 +72,79 @@ app.get('/playlists', async (req, res) => {
   res.json(plays)
 })
 
-app.get(`/playlists/:id`, (req, res) => {
-    const { id } = req.params;
-    const PlaylistIndex = playlists.findIndex(Playlist  => Playlist.id == id)
-    res.status(200).send(playlists[PlaylistIndex])
+app.get(`/playlists/:id`, async (req, res) => {
+  const { id } = req.params;
+  const playlistId = new ObjectId(id);
+  
+  await client.connect();
+  const playlist = await client
+    .db('spotify')
+    .collection('playlists')
+    .findOne({ _id: playlistId });
+
+  res.json(playlist)
 })
 
 
-app.post("/playlists", (req, res) => {
-  const { id, titulo, capa, musicas} = req.body;
+app.post("/playlists", async (req, res) => {
+  const { titulo, capa} = req.body;
   const newPlaylist = {
-      id,
+      _id: new ObjectId,
       titulo,
       capa,
-      musicas
+      musicas: [],
   }
-  playlists.push(newPlaylist)
-  res.status(201).send("Playlist cadastrada com sucesso! xD");
+
+  await client.connect()
+    const playlist = await client
+    .db('spotify')
+    .collection('playlists')
+    .insertOne(newPlaylist);
+    
+  res.send(newPlaylist)
 })
 
-app.patch(`/playlists/:idPlaylist`, (req, res) =>{
+app.patch(`/playlists/:idPlaylist`, async (req, res) =>{
   const { idPlaylist } = req.params;
-
-  const PlaylistIndex = playlists.find(Playlist  => Playlist.id == idPlaylist)
-
   const { id, nome, cantor, arq} = req.body;
 
-  const newMusica = {
-      id,
+  const playlistId = new ObjectId(idPlaylist)
+  const playlist = await client.db('spotify').collection('playlists').findOne({_id: playlistId})
+
+  if (playlist) {
+    const newMusica = {
+      id: new ObjectId,
       nome,
       cantor,
       arq
+    }
+
+    playlist.musicas.push(newMusica)
+
+    const result = await client.db('spotify').collection('playlists').updateOne(
+      { _id: playlistId },
+      { $set: {musicas: playlist.musicas} }
+    )
+
+    if (result.modifiedCount > 0) {
+      res.send(playlist);
+    } else {
+      res.send('Nenhuma alteração feita na playlist');
+    }
   }
 
-  PlaylistIndex.musicas.push(newMusica)
-
-  res.send("Deu certo paizao")
 })
 
-app.get('/musicas', (req, res) => {
+app.get('/musicas', async (req, res) => {
   const search = req.query.search;
-
-  const musicasEncontradas = songs.filter((musica) =>
-    musica.nome.toLowerCase().includes(search.toLowerCase())
-  );
+  
+  await client.connect()
+    const musicas = await client
+    .db('spotify')
+    .collection('songs')
+    .find({nome: {$regex: search}}).toArray();
     
-  if (musicasEncontradas.length > 0) {
-    res.status(200).json(musicasEncontradas);
-  } else {
-    res.status(404).send('Nenhuma música encontrada');
-  }
+  res.send(musicas)
 });
 
 app.delete('/playlists/:id', (req, res) => {
