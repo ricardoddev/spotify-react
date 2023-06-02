@@ -106,7 +106,7 @@ app.post("/playlists", async (req, res) => {
 
 app.patch(`/playlists/:idPlaylist`, async (req, res) =>{
   const { idPlaylist } = req.params;
-  const { id, nome, cantor, arq} = req.body;
+  const { nome, cantor, arq} = req.body;
 
   const playlistId = new ObjectId(idPlaylist)
   const playlist = await client.db('spotify').collection('playlists').findOne({_id: playlistId})
@@ -147,15 +147,16 @@ app.get('/musicas', async (req, res) => {
   res.send(musicas)
 });
 
-app.delete('/playlists/:id', (req, res) => {
+app.delete('/playlists/:id', async (req, res) => {
   const { id } = req.params;
-  const playlistIndex = playlists.findIndex(Playlist  => Playlist.id == id) // se o id da playlist n for encontrado, findIndex retorna -1
+  const playlistId = new ObjectId(id)
 
-  if (playlistIndex !== -1) {
-    playlists.splice(playlistIndex, 1);
-    res.status(200).send("Playlist deletada");
+  const deletedPlaylist = await client.db('spotify').collection('playlists').deleteOne({_id: playlistId})
+
+  if (deletedPlaylist.deletedCount > 0) {
+    res.status(200).send('Playlist deletada');
   } else {
-    res.status(404).send("Playlist não encontrada");
+    res.status(404).send('Playlist não encontrada');
   }
 })
 
