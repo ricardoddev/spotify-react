@@ -16,9 +16,10 @@ const AddPlaylist = () => {
         const newPlaylist = { titulo, capa, musicas};
 
         axios.post('http://localhost:3001/playlists', newPlaylist).then( (res) => {
-        setTitulo('');
-        setCapa("");
-        setMusicas([])
+            setTitulo('');
+            setCapa("");
+            setMusicas([])
+            alert("Playlist adicionada com sucesso!")
         })
     }
 
