@@ -4,40 +4,48 @@ import Icone from "./assets/iconSearch.png"
 import axios from "axios";
 
 const Search = () => {
-  const [searchTerm, setSearchTerm] = useState('')
-  const [searchResult, setSearchResult] = useState([])
+  const [searchTerm, setSearchTerm] = useState('');
+  const [musicas, setMusicas] = useState([]);
 
-  const handleSearchInputChange = (event) => {
-    setSearchTerm(event.target.value)
-  }
-
-  const searchMusic = async () => {
+  const handleSearch = async () => {
     try {
-      const response = await axios.get('/musicas?search=' + searchTerm);
-      setSearchResult(response.data);
+      const response = await axios.get('http://localhost:3001/musicas', {
+        params: {
+          search: searchTerm
+        }
+      });
+  
+      setMusicas(response.data);
     } catch (error) {
-      console.error('Erro ao buscar músicas:', error);
-      setSearchResult([]);
+      console.error(error);
     }
   };
+  
 
   return (
     <>
       <Cabecalho />
-      <div style={{display: 'flex', justifyContent: 'center', height: '88vh', backgroundColor: '#EBF5EE'}}>
+      {/* Resto do conteúdo */}
+      <div style={{ display: 'flex', flexDirection:"column", height: '88vh', backgroundColor: '#EBF5EE' }}>
         <div id='searchbarDiv'>
-          <input type="search" value={searchTerm} onChange={handleSearchInputChange} placeholder="O que você quer ouvir?"/>
-          <button onClick={searchMusic}><img src={Icone} alt="Ícone lupa" /></button>
+          <input
+            type="search"
+            placeholder="O que você quer ouvir?"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button onClick={handleSearch}>
+            <img src={Icone} alt="Ícone lupa" />
+          </button>
         </div>
-        {searchResult.length > 0 ? (
-        <ul>
-          {searchResult.map((musica) => (
-            <li key={musica.id}>{musica.nome}</li>
-          ))}
-        </ul>
-      ) : (
-        <p>Nenhuma música encontrada.</p>
-      )}
+        <div style={{display: "flex", flexDirection: 'column'}}>
+          {musicas.map((musica) => (
+          <div key={musica._id} style={{}}>
+            <h2><u>{musica.nome}</u> - {musica.cantor}</h2>
+            <audio src={musica.arq} controls></audio>
+          </div>
+        ))}
+        </div>
       </div>
     </>
   );
