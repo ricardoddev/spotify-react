@@ -1,20 +1,37 @@
 import React, { useState } from "react";
 import Cabecalho from "./Cabecalho";
-import { Link } from 'react-router-dom';
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Usuario = () => {
   const usuarioLogado = JSON.parse(localStorage.getItem("UsuarioLogado"));
   const [usuario, setUsuario] = useState(usuarioLogado);
+  const [mensagem, setMensagem] = useState("");
+  const [erro, setErro] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setUsuario({ ...usuario, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    localStorage.setItem("UsuarioLogado", JSON.stringify(usuario));
-    alert("Usuário atualizado com sucesso!");
+
+    try {
+      const response = await axios.put(
+        `http://localhost:3001/usuarios/${usuario._id}`,
+        usuario
+      );
+      console.log(response.data);
+      const updatedUser = response.data;
+      localStorage.setItem("UsuarioLogado", JSON.stringify(updatedUser));
+      setMensagem("Usuário atualizado com sucesso");
+      setErro(false);
+    } catch (error) {
+      console.error(error);
+      setMensagem("Erro ao atualizar o usuário");
+      setErro(true);
+    }
   };
 
   return (
@@ -60,7 +77,12 @@ const Usuario = () => {
           />
           <br />
           <label htmlFor="genero">Gênero</label>
-          <select id="genero" name="genero" value={usuario.genero} onChange={handleChange}>
+          <select
+            id="genero"
+            name="genero"
+            value={usuario.genero}
+            onChange={handleChange}
+          >
             <option value="masculino">Masculino</option>
             <option value="feminino">Feminino</option>
             <option value="outro">Outro</option>
@@ -68,6 +90,9 @@ const Usuario = () => {
           <br />
           <button type="submit">Atualizar</button>
         </form>
+        {mensagem && (
+          <p style={{ color: erro ? "red" : "green" }}>{mensagem}</p>
+        )}
       </div>
     </>
   );

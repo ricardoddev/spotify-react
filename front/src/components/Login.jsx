@@ -12,24 +12,26 @@ const Login = () => {
   const [errorLogin, setErrorLogin] = useState(false);
   const navigate = useNavigate();
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    axios
-      .get(`http://localhost:3001/users?email=${email}`)
-      .then((resultado) => {
-        const user = resultado.data[0];
-        if (user.senha !== senha) {
-          setErrorLogin(true);
-        } else {
-          setErrorLogin(false);
-          localStorage.setItem("UsuarioLogado", JSON.stringify(user));
-          navigate("/playlists");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/usuariologado?email=${email}`
+      );
+
+      const user = response.data;
+
+      if (!user || user.senha !== senha) {
+        setErrorLogin(true);
+      } else {
+        setErrorLogin(false);
+        localStorage.setItem("UsuarioLogado", JSON.stringify(user));
+        navigate("/playlists");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <main
@@ -85,8 +87,8 @@ const Login = () => {
               )}
             </Col>
           </FormGroup>
-          <div style={{marginBottom : "15px"}}>
-            <Link to= "/TESTE">Esqueci minha senha</Link>
+          <div style={{ marginBottom: "15px" }}>
+            <Link to="/TESTE">Esqueci minha senha</Link>
           </div>
           <div
             style={{

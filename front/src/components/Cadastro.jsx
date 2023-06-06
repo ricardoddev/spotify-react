@@ -9,39 +9,39 @@ const Cadastro = () => {
   const customColor = "#1DB954";
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const[nome, setNome] = useState("");
+  const [nome, setNome] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
   const [error, setError] = useState(false);
   const [Data, setData] = useState("");
-  const [genero, setGenero] =  useState("");
+  const [genero, setGenero] = useState("");
 
   function validacao() {
     if (!email || !confirmEmail || !senha || !nome || !Data) {
       return false;
     }
     return true;
-  } 
+  }
 
-  function Generos(event){
+  function Generos(event) {
     setGenero(event.target.value);
   }
-  
+
   function handleSubmit(e) {
     e.preventDefault();
     if (email !== confirmEmail) {
-      setError(true)
+      setError(true);
     } else if (validacao()) {
-      const newUser = { email, senha, nome, Data, genero};
-  
-      axios.post('http://localhost:3001/users', newUser).then( (res) => {
-        setEmail('');
-        setConfirmEmail('');
-        setSenha('');
-        setNome('');
-        setData('');
-        setGenero('');
-        setError(false)
-      })
+      const newUser = { email, senha, nome, Data, genero };
+
+      axios.post("http://localhost:3001/usuario", newUser).then((res) => {
+        setEmail("");
+        setConfirmEmail("");
+        setSenha("");
+        setNome("");
+        setData("");
+        setGenero("");
+        setError(false);
+      });
     }
   }
   return (
@@ -91,7 +91,7 @@ const Cadastro = () => {
               />
               {error && (
                 <p style={{ color: "red" }}>Campos de email diferentes</p>
-                )}
+              )}
             </Col>
           </FormGroup>
           <FormGroup row>
@@ -142,42 +142,59 @@ const Cadastro = () => {
           <legend className="col-form-label col-sm-5">Qual seu gênero?</legend>
           <Col sm={8}>
             <FormGroup check>
-              <Input name="genero" type="radio" value="masculino" onChange={Generos}/> <Label check>Masculino</Label>
+              <Input
+                name="genero"
+                type="radio"
+                value="masculino"
+                onChange={Generos}
+              />{" "}
+              <Label check>Masculino</Label>
             </FormGroup>
             <FormGroup check>
-              <Input name="genero" type="radio" value="feminino" onChange={Generos}/> <Label check>Feminino</Label>
+              <Input
+                name="genero"
+                type="radio"
+                value="feminino"
+                onChange={Generos}
+              />{" "}
+              <Label check>Feminino</Label>
             </FormGroup>
             <FormGroup check>
-              <Input name="genero" type="radio" value="outro" onChange={Generos}/> <Label check>Outro</Label>
+              <Input
+                name="genero"
+                type="radio"
+                value="outro"
+                onChange={Generos}
+              />{" "}
+              <Label check>Outro</Label>
             </FormGroup>
           </Col>
           <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          marginTop: "20px",
-        }}
-      >
-        <Button
-          type="submit"
-          style={{
-            backgroundColor: customColor,
-            color: "#000000",
-            marginRight: "10px",
-          }}
-        >
-          Inscrever-se
-        </Button>
-        <Link to= "/login" >
-        <a href="#" style={{ color: "#1DB954" }}>
-          Já possuo conta
-        </a>
-        </Link>
-      </div>
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "20px",
+            }}
+          >
+            <Button
+              type="submit"
+              style={{
+                backgroundColor: customColor,
+                color: "#000000",
+                marginRight: "10px",
+              }}
+            >
+              Inscrever-se
+            </Button>
+            <Link to="/login">
+              <a href="#" style={{ color: "#1DB954" }}>
+                Já possuo conta
+              </a>
+            </Link>
+          </div>
         </Form>
       </div>
-     
     </main>
   );
 };
